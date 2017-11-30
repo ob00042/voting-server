@@ -124,6 +124,19 @@ describe('application logic', () => {
 			}));
 		});
 
+		it('does not allow votes with entry not in current pair', () => {
+			const state = Map({
+				pair: List.of('Trainspotting', '28 Days Later'),
+				tally: Map()
+			});
+			const nextState = vote(state, 'Sunshine');
+
+			expect(nextState).to.equal(Map({
+				pair: List.of('Trainspotting', '28 Days Later'),
+				tally: Map()
+			}));
+		});
+
 	});
 
 });
